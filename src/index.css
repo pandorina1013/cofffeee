@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  background: #FAFAFA;
+  color: #0A0A0A;
+  font-family: 'Geist', 'Noto Sans JP', system-ui, sans-serif;
+  font-feature-settings: "ss01", "ss02", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: #FAFAFA;
+  min-height: 100vh;
+}
+
+.grain::before { display: none; }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@keyframes ink-bloom {
+  0%   { opacity: 0; transform: scale(0.4); }
+  60%  { opacity: 1; transform: scale(1.12); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.ink-bloom { animation: ink-bloom 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+.pulse-soft { animation: pulse-soft 1.6s ease-in-out infinite; }
+
+/* Process icon animation primitives ------------------------------------------ */
+
+@keyframes drip-fall {
+  0%   { transform: translateY(-8px); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+.anim-drip { animation: drip-fall 1.8s ease-in infinite; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.anim-spin { animation: spin-slow 8s linear infinite; transform-origin: center; transform-box: fill-box; }
+
+@keyframes bubble-rise {
+  0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+  20%  { opacity: 0.9; }
+  100% { transform: translateY(-16px) scale(1.1); opacity: 0; }
+}
+.anim-bubble { animation: bubble-rise 2.4s ease-out infinite; }
+
+@keyframes ooze {
+  0%, 100% { transform: scaleY(1); }
+  50%      { transform: scaleY(1.18); }
+}
+.anim-ooze { animation: ooze 2.2s ease-in-out infinite; transform-origin: top center; transform-box: fill-box; }
+
+@keyframes wind-drift {
+  0%   { transform: translateX(-8px); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateX(10px); opacity: 0; }
+}
+.anim-wind { animation: wind-drift 1.8s ease-in-out infinite; }
+
+@keyframes rain-fall {
+  0%   { transform: translate(0, -8px); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translate(2px, 12px); opacity: 0; }
+}
+.anim-rain { animation: rain-fall 1.4s linear infinite; }
+
+@keyframes swirl {
+  0%, 100% { transform: rotate(-6deg); }
+  50%      { transform: rotate(6deg); }
+}
+.anim-swirl { animation: swirl 3.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+@keyframes shimmer-h {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(2px); }
+}
+.anim-shimmer { animation: shimmer-h 1.6s ease-in-out infinite; }
+
+@keyframes squeeze {
+  0%, 100% { transform: scale(1, 1); }
+  50%      { transform: scale(1.08, 0.94); }
+}
+.anim-squeeze { animation: squeeze 2.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+@keyframes flame-flicker {
+  0%, 100% { transform: scaleY(1) translateX(0); }
+  25%      { transform: scaleY(1.12) translateX(-0.6px); }
+  60%      { transform: scaleY(0.94) translateX(0.6px); }
+}
+.anim-flame { animation: flame-flicker 0.6s ease-in-out infinite alternate; transform-origin: bottom center; transform-box: fill-box; }
+
+/* Map / wheel smooth motion ------------------------------------------------- */
+
+.smooth-pos { transition: cx 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), cy 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.smooth-r   { transition: r 0.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+
+/* Native control reset ------------------------------------------------------ */
+
+select, input, textarea, button {
+  font-family: inherit;
+  background: transparent;
+  outline: none;
+  color: inherit;
+}
+select { appearance: none; -webkit-appearance: none; }
+select option { background: #FFFFFF; color: #0A0A0A; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: rgba(26,20,16,0.16); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(26,20,16,0.30); }
+
+.fig-tab { font-variant-numeric: tabular-nums lining-nums; }
+
+/* Surfaces — clean refined cards --------------------------------------------- */
+
+.surface {
+  background: #FFFFFF;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 2px rgba(0,0,0,0.03), 0 4px 16px -10px rgba(0,0,0,0.08);
+}
+.surface-soft {
+  background: #F4F4F4;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+}
+.surface-hover:hover {
+  border-color: rgba(0,0,0,0.16);
+}
